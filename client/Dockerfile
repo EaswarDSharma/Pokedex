@@ -1,4 +1,4 @@
-FROM node:16-alpine AS builder
+FROM node:16-alpine as builder
 USER node
 RUN mkdir -p /home/node/app
 WORKDIR /home/node/app
