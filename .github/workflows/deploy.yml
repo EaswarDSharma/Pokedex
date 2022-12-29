@@ -31,9 +31,9 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: dockerize 
-          environment_name: Dockerize-env
-          existing_bucket_name: elasticbeanstalk-eu-west-1-953499974945
+          application_name: docker
+          environment_name: Docker-env
+          existing_bucket_name: awsswadoker
           region: eu-west-1
-          version_label: ${{ github.sha }}
+          version_label: a21b12ccde4112
           deployment_package: deploy.zip
