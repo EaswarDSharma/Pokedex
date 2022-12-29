@@ -33,7 +33,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: dockerize 
           environment_name: Dockerize-env
-          existing_bucket_name: nadhidatabucket
+          existing_bucket_name: elasticbeanstalk-eu-west-1-953499974945
           region: eu-west-1
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
