@@ -50,3 +50,5 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+env:
+          DOCKER_TOKEN: ${{ env.DOCKER_TOKEN }}
