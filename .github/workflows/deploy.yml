@@ -35,5 +35,5 @@ jobs:
           environment_name: Multidocker-env
           existing_bucket_name: elasticbeanstalk-us-east-1-953499974945
           region: us-east-1
-          version_label: a21b12ce4112231
+          version_label: a21b12ce4112237
           deployment_package: deploy.zip
