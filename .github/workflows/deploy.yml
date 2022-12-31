@@ -22,7 +22,7 @@ jobs:
       - run: docker push easward/multi-nginx-10-14
       - run: docker push easward/multi-server-10-14
       - run: docker push easward/multi-worker-10-14
- 
+
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
   
@@ -35,5 +35,5 @@ jobs:
           environment_name: Multidocker-env
           existing_bucket_name: elasticbeanstalk-us-east-1-953499974945
           region: us-east-1
-          version_label: a21b12ce41122372
+          version_label: a21b12ce41122373
           deployment_package: deploy.zip
