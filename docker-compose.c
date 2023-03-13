@@ -1,0 +1,31 @@
+version: "3"
+services:
+  client:
+    image: "easward/multi-client-10-14"
+    mem_limit: 128m
+    hostname: client
+  server:
+    image: "easward/multi-server-10-14"
+    mem_limit: 128m
+    hostname: api
+    environment:
+      - REDIS_HOST=$REDIS_HOST
+      - REDIS_PORT=$REDIS_PORT
+      - PGUSER=$PGUSER
+      - PGHOST=$PGHOST
+      - PGDATABASE=$PGDATABASE
+      - PGPASSWORD=$PGPASSWORD
+      - PGPORT=$PGPORT
+  worker:
+    image: "easward/multi-worker-10-14"
+    mem_limit: 128m
+    hostname: worker
+    environment:
+      - REDIS_HOST=$REDIS_HOST
+      - REDIS_PORT=$REDIS_PORT
+  nginx:
+    image: "easward/multi-nginx-10-14"
+    mem_limit: 128m
+    hostname: nginx
+    ports:
+      - "80:80"
