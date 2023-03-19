@@ -1,16 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import OtherPage from './OtherPage';
 import Fib from './Fib';
+import { Typography } from '@mui/material';
 
-function App() {
+
+function Copyright() {
   return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link to="/">website</Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+function App() {
+  return (<>
     <Router>
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -27,8 +37,11 @@ function App() {
           <Route exact path="/" component={Fib} />
           <Route path="/otherpage" component={OtherPage} />
         </div>
+        <Copyright/>
+
       </div>
     </Router>
+    </>
   );
 }
 
