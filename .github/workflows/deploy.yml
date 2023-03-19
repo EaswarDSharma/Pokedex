@@ -36,4 +36,5 @@ jobs:
           existing_bucket_name: awstoto
           region: ap-northeast-1
           version_label: ${{ github.sha }}
+          use_existing_version_if_available: true
           deployment_package: deploy.zip
