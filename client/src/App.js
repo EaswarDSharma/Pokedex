@@ -3,7 +3,11 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import OtherPage from './OtherPage';
 import Fib from './Fib';
-import { Typography } from '@mui/material';
+import { Typography,IconButton,Button } from '@mui/material';
+import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Grid from '@mui/material/Unstable_Grid2';
 
 
 function Copyright() {
@@ -20,18 +24,25 @@ function App() {
   return (<>
     <Router>
       <div className="App">
-        <header className="App-header">
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+        <header >
+        <Grid container  sx={{ flexGrow: 1 }}>
+          <AppBar position="static" elevation={0}>
+            <Toolbar>
+            <Grid xs={6} xsOffset={3} md={2} mdOffset={0}>
+          <IconButton 
+          color="secondary" 
+          aria-label="add to shopping cart" 
+          edge="start"
+          
+          href="/"
           >
-            Learn React
-            Ya!....Ya!
-          </a>
-          <Link to="/">Home</Link>
+          <ShoppingCartTwoToneIcon />
+          </IconButton>
+          </Grid>
           <Link to="/otherpage">Other Page</Link>
+          </Toolbar>
+          </AppBar>
+          </Grid>
         </header>
         <div>
           <Route exact path="/" component={Fib} />

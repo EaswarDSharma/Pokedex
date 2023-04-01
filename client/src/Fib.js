@@ -5,16 +5,6 @@ import { Typography } from '@mui/material';
 import MaterialReactTable from 'material-react-table';
 import { BrowserRouter as  Link } from 'react-router-dom';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link to="/">website</Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 function Fib() {
   const [seenIndexes, setSeenIndexes] = useState([]);
@@ -88,7 +78,6 @@ function Fib() {
         justifyContent="center"
         alignItems="center"
         minHeight="100vh"
-        
         >
         <MaterialReactTable columns={columns} data={arr} />
         </Box>
