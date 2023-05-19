@@ -4,12 +4,33 @@ import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import MaterialReactTable from 'material-react-table';
 import { BrowserRouter as  Link } from 'react-router-dom';
-
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import './Fib.css';
 
 function Fib() {
   const [seenIndexes, setSeenIndexes] = useState([]);
   const [values, setvalues] = useState({});
   const [index, setIndex] = useState('');
+  // To add an item:
+/* setIndex(prevItems => [
+  ...prevItems,
+  {  text: newText, offset: 100 }
+]);
+
+// To remove an item:
+setIndex(prevItems => prevItems.filter(item => item.id !== id));
+
+// To update the offset of each item:
+setIndex(prevItems =>
+  prevItems.map(item => {
+    if (item.id === id) {
+      return { ...item, offset: -100 };
+    } else {
+      return item;
+    }
+  })
+); */
+
   const columns = useMemo(
     () => [
       {
@@ -63,7 +84,21 @@ function Fib() {
       ind.push(key);
     }
     ind.sort();
-    return ind.map((number) => number).join(", ");
+    return (
+    <>{ind.map((number) => number).join(", ")}
+    <ul>
+  {ind.map(key => (
+    <li className="slide-in">{key}</li>
+  ))}
+</ul>
+<TransitionGroup>
+  {ind.map(item => (
+    <CSSTransition classNames="slide-in" timeout={300}>
+      <li>{item}</li>
+    </CSSTransition>
+  ))}
+</TransitionGroup>
+    </>)
   });
   const Rendervalues = React.memo(() => {
     var arr = [];
@@ -96,6 +131,8 @@ function Fib() {
       </form>
       <h3>Indexes I have seen:</h3>
       <RenderSeenIndexes />
+      
+
       <h3>Calculated values:</h3>
       <Rendervalues />
       </div>
