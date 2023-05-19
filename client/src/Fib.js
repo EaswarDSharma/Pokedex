@@ -11,6 +11,7 @@ function Fib() {
   const [seenIndexes, setSeenIndexes] = useState([]);
   const [values, setvalues] = useState({});
   const [index, setIndex] = useState('');
+ 
   // To add an item:
 /* setIndex(prevItems => [
   ...prevItems,
@@ -86,18 +87,6 @@ setIndex(prevItems =>
     ind.sort();
     return (
     <>{ind.map((number) => number).join(", ")}
-    <ul>
-  {ind.map(key => (
-    <li className="slide-in">{key}</li>
-  ))}
-</ul>
-<TransitionGroup>
-  {ind.map(item => (
-    <CSSTransition classNames="slide-in" timeout={300}>
-      <li>{item}</li>
-    </CSSTransition>
-  ))}
-</TransitionGroup>
     </>)
   });
   const Rendervalues = React.memo(() => {
@@ -120,7 +109,7 @@ setIndex(prevItems =>
     });
 
   return (
-    <div>
+    <div >
       <form onSubmit={handleSubmit}>
         <label>Enter your index:</label>
         <input

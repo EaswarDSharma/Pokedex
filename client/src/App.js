@@ -8,6 +8,8 @@ import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Grid from '@mui/material/Unstable_Grid2';
+import { makeStyles } from '@mui/styles';
+import pokemon from './pokemon.jpg';
 
 
 function Copyright() {
@@ -21,13 +23,24 @@ function Copyright() {
   );
 }
 function App() {
-  return (<>
+  const useStyles = makeStyles({
+    root: {
+      backgroundImage: `url(${pokemon})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      
+    },
+  });
+  const classes = useStyles();
+  return (<div className={classes.root}>
+
     <Router>
       <div className="App">
         <header >
         <Grid container  sx={{ flexGrow: 1 }}>
-          <AppBar position="static" elevation={0}>
-            <Toolbar>
+          <AppBar position="static"  style={{ background: 'transparent', boxShadow: 'none'}}>
+            <Toolbar >
             <Grid xs={6} xsOffset={3} md={2} mdOffset={0}>
           <IconButton 
           color="secondary" 
@@ -39,6 +52,7 @@ function App() {
           <ShoppingCartTwoToneIcon />
           </IconButton>
           </Grid>
+          <div style={{ flexGrow: 1 }}></div>
           <Link to="/otherpage">Other Page</Link>
           </Toolbar>
           </AppBar>
@@ -52,7 +66,7 @@ function App() {
 
       </div>
     </Router>
-    </>
+    </div>
   );
 }
 
