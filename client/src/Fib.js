@@ -1,36 +1,51 @@
 import React, { useState, useEffect,useMemo} from 'react';
 import axios from 'axios';
-import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
+import {Box,Chip, IconButton,TextField,InputAdornment,Paper,Card} from '@mui/material';
 import MaterialReactTable from 'material-react-table';
 import { BrowserRouter as  Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './Fib.css';
+import SearchSharpIcon from '@mui/icons-material/SearchSharp';
+import Trans from './Trans.jsx';
+import CatchingPokemonTwoToneIcon from '@mui/icons-material/CatchingPokemonTwoTone';
+
 
 function Fib() {
   const [seenIndexes, setSeenIndexes] = useState([]);
   const [values, setvalues] = useState({});
   const [index, setIndex] = useState('');
  
-  // To add an item:
+  const handleChange = (event) => {
+    setIndex(event);
+  };
+  // To add an item:  putAdornment i
 /* setIndex(prevItems => [
   ...prevItems,
   {  text: newText, offset: 100 }
 ]);
-
-// To remove an item:
-setIndex(prevItems => prevItems.filter(item => item.id !== id));
-
-// To update the offset of each item:
-setIndex(prevItems =>
-  prevItems.map(item => {
-    if (item.id === id) {
-      return { ...item, offset: -100 };
-    } else {
-      return item;
-    }
-  })
+**********
+<form onSubmit={handleSubmit}>
+        <label>Enter your index:</label>
+        <input
+          value={index}
+          onChange={(event) => setIndex(event.target.value)}
+        />
+        <button>Submit</button>
+      </form>
+*********
 ); */
+const SearchBar = ({index}) => {
+  const BarStyle = {width:"20rem",background:"#F0F0F0", border:"none", padding:"0.5rem"};
+  return (
+    <input
+      style={BarStyle}
+      key="search-bar"
+      value={index}
+      placeholder={"search news"}
+      onChange={(event) => setIndex(event.target.value)}
+     />
+  );
+}
 
   const columns = useMemo(
     () => [
@@ -61,8 +76,8 @@ setIndex(prevItems =>
     }
   }, []);
   const handleSubmit = async (event) => {
-    if(index.trim()!==""){
     event.preventDefault();
+    if(index.trim()!==""){
     await axios.post('/api/values', {
       index: index.toLowerCase(),
     });
@@ -85,10 +100,13 @@ setIndex(prevItems =>
       ind.push(key);
     }
     ind.sort();
-    return (
-    <>{ind.map((number) => number).join(", ")}
-    </>)
+    return (<Box display="flex"
+    justifyContent="center"
+    alignItems="center">
+    <Trans data={ind}/>
+    </Box>)
   });
+
   const Rendervalues = React.memo(() => {
     var arr = [];
     for (let key in values) {
@@ -107,22 +125,78 @@ setIndex(prevItems =>
         </Box>
       );
     });
+  const BarStyle = {width:"20rem",background:"#F0F0F0", border:"none",};
 
   return (
-    <div >
-      <form onSubmit={handleSubmit}>
-        <label>Enter your index:</label>
-        <input
-          value={index}
-          onChange={(event) => setIndex(event.target.value)}
-        />
-        <button>Submit</button>
-      </form>
-      <h3>Indexes I have seen:</h3>
+    <div>
+  
+         <form onSubmit={handleSubmit}>
+<TextField
+      style={BarStyle}
+      key="search-bar"
+      value={index}
+      size="small"
+      variant="standard"
+      label="Pokemon"
+      color='grey'
+      onChange={(event) => setIndex(event.target.value)}
+      padding='5px 0px'
+      InputProps={{
+        style: {
+          padding:0
+        }  ,
+        endAdornment: (
+          <InputAdornment>
+            <IconButton size='large' onClick={handleSubmit} sx={{ "&:hover": { backgroundColor: "transparent" } }}>
+              <SearchSharpIcon fontSize='large'/>
+            </IconButton>
+          </InputAdornment>
+        )
+      }}
+     />
+     </form>
+     <Box
+  display="flex"
+  justifyContent="center"
+  alignItems="center"
+  left='50%'
+        top= '50%'
+>
+      <Paper sx={{mt:3, pb:2, width:"600px", }}>
+      <Chip icon={<CatchingPokemonTwoToneIcon fontSize="medium"  htmlColor="#E3242B" />} 
+      label="Pokemons found till now" 
+      variant="outlined" 
+      style={{backgroundColor:'white'}} 
+      color="error"
+      sx={{
+        m:2,
+        "& .MuiChip-label": {
+          fontSize: 18,
+          fontFamily: "futura",
+          fontWeight: "bold",
+          color: "black"
+        }
+      }}
+      size="large"/>
       <RenderSeenIndexes />
-      
+      </Paper>
+      </Box>
 
-      <h3>Calculated values:</h3>
+      <Chip icon={<CatchingPokemonTwoToneIcon fontSize="medium"  htmlColor="#E3242B" />} 
+      label="Your Pokedex" 
+      variant="outlined" 
+      style={{backgroundColor:'white'}} 
+      color="error"
+      sx={{
+        m:2,
+        "& .MuiChip-label": {
+          fontSize: 18,
+          fontFamily: "futura",
+          fontWeight: "bold",
+          color: "black"
+        }
+      }}
+      size="large"/>
       <Rendervalues />
       </div>
   );
