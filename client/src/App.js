@@ -28,6 +28,8 @@ function App() {
       background: `url(${pokemon}) no-repeat center center fixed`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
+      width: '100vw',
+      minHeight: '100vh',
     },
   });
   const classes = useStyles();
@@ -36,9 +38,9 @@ function App() {
       <div className="App">
         <header >
         <Grid container  sx={{ flexGrow: 1 }}>
-          <AppBar position="static"  style={{ background: 'transparent', boxShadow: 'none'}}>
+          <AppBar position="fixed"  style={{ background: 'transparent', boxShadow: 'none'}}>
             <Toolbar >
-            <Grid xs={6} xsOffset={3} md={2} mdOffset={0}>
+            <Grid xs={6} xsOffset={3} mb={2} mdOffset={0}>
            <IconButton 
           aria-label="add to shopping cart" 
           edge="start"
