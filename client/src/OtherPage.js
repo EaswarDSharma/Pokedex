@@ -1,5 +1,7 @@
 import React from "react";
 import { Card, Grid, CardContent, CardMedia, Typography } from "@mui/material";
+import { Email, LinkedIn, GitHub, Mail, Phone } from "@mui/icons-material";
+import medisc from "./medisc.png"
 import ebs from "./ebs.png";
 const page = () => {
   return (
@@ -15,7 +17,50 @@ const page = () => {
               position: "fixed",
               borderRadius: "10px",
             }}
-          ></Card>
+          ><CardContent
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            height: "100%",
+          }}
+        >
+          <img
+            src={medisc}
+            alt="Profile"
+            style={{
+              width: "50%",
+              height: "20%",
+              objectFit: "cover",
+              borderRadius: "50%",
+            }}
+          />
+          <div style={{ marginTop: "15px" }}>
+          <Mail sx={{ marginRight: "1px" }} />
+          easwardsharma@gmail.com
+        </div>
+        <div style={{ marginTop: "15px", display: "flex", alignItems: "center" }}>
+          <Phone sx={{ marginRight: "5px", marginBottom: "2px",color:"#11ba2a" }} />
+          +919398816022
+        </div>
+          <div style={{ marginTop: "15px" }}>
+            <a href="https://www.linkedin.com/your-linkedin-profile">
+              <LinkedIn />
+            </a>
+          </div>
+          <div style={{ marginTop: "15px" }}>
+            <a href="https://www.github.com/your-github-profile">
+              <GitHub sx={{ color: "#000000" }}  />
+            </a>
+          </div>
+          <div style={{ marginTop: "20px" }}>
+            <a href="https://www.example.com/project2">Source code</a>
+          </div>
+          <div style={{ marginTop: "20px" }}>
+            <a href="https://www.example.com/project2">Project 2</a>
+          </div>
+        </CardContent>
+          </Card>
         </Grid>
         <Grid item>
           <Card sx={{ height: "40vh", width: "68vw", mb: "20px", ml: "20vw" }}>
