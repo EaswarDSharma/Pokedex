@@ -89,10 +89,11 @@ function Fib() {
     for (let key in values) {
       ind.push(key);
     }
+
     ind.sort();
     return (
-      <Box display="flex" justifyContent="center" alignItems="center">
-        <Trans data={ind} />
+      <Box display="flex"   sx={{alignItems:"center", justifyContent:"center",}}>
+       <Trans data={ind}/>
       </Box>
     );
   });
@@ -108,26 +109,44 @@ function Fib() {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        minHeight="100vh"
+        minHeight="90vh"
       >
-        <MaterialReactTable columns={columns} data={arr} />
+        <MaterialReactTable
+        columns={columns}
+        data={arr}
+        muiTablePaperProps={{
+          elevation: 0, //change the mui box shadow
+          //customize paper styles
+          sx: {
+            borderRadius: '4px',
+            width:{xs:"75vw", md:"60vw"}
+          }}}
+          muiTableHeadCellProps={{
+            sx:{
+              width:"25px"
+            }
+          }}
+
+
+           />
       </Box>
     );
   });
-  const BarStyle = { width: "20rem", background: "#F0F0F0", border: "none" };
+  const BarStyle = {  background: "#F0F0F0", border: "none" };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <TextField
           style={BarStyle}
-          sx={{ mt: "35px" }}
+          sx={{ mt: "55px",minWidth:"200px",width:{xs:"30vw",md:"25vw"},maxWidth:"300px"}}
           key="search-bar"
           value={index}
           size="small"
           variant="standard"
-          label="Pokemon"
+          label="..Search Pokemon"
           color="grey"
+          
           onChange={(event) => setIndex(event.target.value)}
           InputProps={{
             style: {
@@ -154,7 +173,7 @@ function Fib() {
         left="50%"
         top="50%"
       >
-        <Paper sx={{ mt: 3, pb: 2, width: "600px" }}>
+        <Paper sx={{ mt: 3, pb: 2, width: {xs:"70vw",md:"50vw"}, minWidth:"300px",maxWidth:"550px"}}>
           <Chip
             icon={
               <CatchingPokemonTwoToneIcon
@@ -169,7 +188,7 @@ function Fib() {
             sx={{
               m: 2,
               "& .MuiChip-label": {
-                fontSize: 18,
+                fontSize: 17,
                 fontFamily: "futura",
                 fontWeight: "bold",
                 color: "black",

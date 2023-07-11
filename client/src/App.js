@@ -27,6 +27,7 @@ function App() {
       background: `url(${pokemon}) no-repeat center center fixed`,
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
+      backgroundAttachment: "fixed",
       width: "100vw",
       minHeight: "100vh",
     },

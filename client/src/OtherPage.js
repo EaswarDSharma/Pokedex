@@ -1,40 +1,57 @@
 import React from "react";
 import { Card, Grid, CardContent, CardMedia, Typography } from "@mui/material";
 import { Email, LinkedIn, GitHub, Mail, Phone } from "@mui/icons-material";
-import medisc from "./medisc.png"
+import medisc from "./me-t-r.png"
 import ebs from "./ebs.png";
 const page = () => {
   return (
     <div>
-      <Grid container spacing="30px" sx={{ mt: "35px" }}>
-        <Grid item>
+      <Grid container spacing={2} sx={{ mt: "35px" ,}}>
+        <Grid item xs={8} md={2.5} ml={5} mr={1}>
           <Card
             sx={{
-              height: "85vh",
-              width: "18vw",
-              ml: "10px",
-              overflow: "hidden",
-              position: "fixed",
+              height: {
+                md:"85vh"
+              },
+              width:{
+                md:"18vw ",
+              },
               borderRadius: "10px",
+              ml:{
+                xs:"20vw",
+                md:"0"
+              },
+              mt:{md:"55px"},
+              overflow: {
+                xs: "visible",
+                md: "hidden",
+              },
+              position: {
+                xs: "static",
+                md: "fixed",
+        },
+        top: 0,
             }}
-          ><CardContent
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            height: "100%",
-          }}
-        >
-          <img
-            src={medisc}
-            alt="Profile"
-            style={{
-              width: "50%",
-              height: "20%",
-              objectFit: "cover",
-              borderRadius: "50%",
-            }}
-          />
+          >
+            <CardContent
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                height: "100%",
+                
+              }}
+            >
+              <img
+                src={medisc}
+                alt="Profile"
+                style={{
+                  width: "50%",
+                  height: "auto",
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                }}
+              />
           <div style={{ marginTop: "15px" }}>
           <Mail sx={{ marginRight: "1px" }} />
           easwardsharma@gmail.com
@@ -44,17 +61,17 @@ const page = () => {
           +919398816022
         </div>
           <div style={{ marginTop: "15px" }}>
-            <a href="https://www.linkedin.com/your-linkedin-profile">
+            <a href="https://www.linkedin.com/in/easwar-sharma-a9a03b15b/">
               <LinkedIn />
             </a>
           </div>
           <div style={{ marginTop: "15px" }}>
-            <a href="https://www.github.com/your-github-profile">
+            <a href="https://github.com/EaswarDSharma">
               <GitHub sx={{ color: "#000000" }}  />
             </a>
           </div>
           <div style={{ marginTop: "20px" }}>
-            <a href="https://www.example.com/project2">Source code</a>
+            <a href="https://github.com/EaswarDSharma/dockerized">Source code</a>
           </div>
           <div style={{ marginTop: "20px" }}>
             <a href="https://www.example.com/project2">Project 2</a>
@@ -62,8 +79,8 @@ const page = () => {
         </CardContent>
           </Card>
         </Grid>
-        <Grid item>
-          <Card sx={{ height: "40vh", width: "68vw", mb: "20px", ml: "20vw" }}>
+        <Grid item xs={12} md={8}>
+          <Card sx={{  mb: "20px",  }}>
             <CardContent sx={{ padding: "25px", textAlign: "left" }}>
               <Typography variant="h5" sx={{ fontWeight: "bold", mb: "5px" }}>
                 Hi, I'm
@@ -84,7 +101,7 @@ const page = () => {
               </Typography>
             </CardContent>
           </Card>
-          <Card sx={{ width: "64vw", ml: "20vw", mb: "10px", padding: "2vw" }}>
+          <Card sx={{ mb: "10px", padding: "2vw",}}>
             <Typography variant="h6" component="h2">
               High Level Overview
             </Typography>
@@ -93,13 +110,8 @@ const page = () => {
               src={ebs}
               alt="EBS Image"
               sx={{
-                margin: "5px",
-                objectFit: "contain",
-                height: "auto",
-                width: "100%",
-                maxWidth: "50vw",
-                ml: "20px",
-              }}
+                objectFit: "cover",
+              }} 
             />
             <CardContent>
               <Typography variant="body1" component="p" textAlign="left">
