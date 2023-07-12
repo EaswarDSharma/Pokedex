@@ -1,12 +1,19 @@
 import React from "react";
-import { Card, Grid, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, Grid, CardContent, CardMedia, Typography,useMediaQuery, useTheme  } from "@mui/material";
 import { Email, LinkedIn, GitHub, Mail, Phone } from "@mui/icons-material";
 import medisc from "./me-t-r.png"
 import ebs from "./ebs.png";
-const page = () => {
+const OtherPage = () => {
+  const theme = useTheme();
+  const isXsScreen = useMediaQuery(theme.breakpoints.only('xs'));
+  const isSmScreen = useMediaQuery(theme.breakpoints.only('sm'));
+  const smallScreen = (isSmScreen||isXsScreen)
   return (
     <div>
-      <Grid container spacing={2} sx={{ mt: "35px" ,}}>
+      <Grid container 
+      justifyContent={smallScreen ? 'center' : 'flex-start'}
+      alignItems={smallScreen ? 'center' : 'flex-start'}
+      spacing={2} sx={{ mt: "35px" ,}}>
         <Grid item xs={8} md={2.5} ml={5} mr={1}>
           <Card
             sx={{
@@ -18,17 +25,16 @@ const page = () => {
                 xs:"45vw"
               },
               borderRadius: "10px",
-              ml:{
-                xs:"20vw",
-                md:"0"
-              },
+              
               mt:{md:"55px"},
               overflow: {
                 xs: "visible",
+                sm: "visible",
                 md: "hidden",
               },
               position: {
                 xs: "static",
+                sm: "static",
                 md: "fixed",
               },
               top: 0,
@@ -81,7 +87,7 @@ const page = () => {
         </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={11} md={8}  sx={{ml:{md:"0px",xs:"3.5vw" }}}>
+        <Grid item xs={11} md={8}  sx={{ml:{md:"1vw",xs:"3.5vw" }}}>
           <Card sx={{  mb: "20px",  }}>
             <CardContent sx={{ padding: "25px", textAlign: "left" }}>
               <Typography variant="h5" sx={{ fontWeight: "bold", mb: "5px" }}>
@@ -146,4 +152,4 @@ const page = () => {
     </div>
   );
 };
-export default page;
+export default OtherPage;
