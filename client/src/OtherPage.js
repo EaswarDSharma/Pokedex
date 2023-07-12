@@ -15,6 +15,7 @@ const page = () => {
               },
               width:{
                 md:"18vw ",
+                xs:"45vw"
               },
               borderRadius: "10px",
               ml:{
@@ -29,8 +30,9 @@ const page = () => {
               position: {
                 xs: "static",
                 md: "fixed",
-        },
-        top: 0,
+              },
+              top: 0,
+              minWidth:"230px"
             }}
           >
             <CardContent
@@ -79,7 +81,7 @@ const page = () => {
         </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={11} md={8}  sx={{ml:{md:"0px",xs:"3.5vw" }}}>
           <Card sx={{  mb: "20px",  }}>
             <CardContent sx={{ padding: "25px", textAlign: "left" }}>
               <Typography variant="h5" sx={{ fontWeight: "bold", mb: "5px" }}>
