@@ -34,7 +34,7 @@ const Trans = ({ data }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            margin: "0 20px",
+            mr:"10px"
           }}
         >
           <ArrowBackIosSharpIcon fontSize="large" />
@@ -45,7 +45,7 @@ const Trans = ({ data }) => {
             justifyContent: "space-between",
             alignItems: "center",
             width: "35vw",
-            minWidth:"180px"
+            minWidth:"230px"
           }}
         >
           <AnimatePresence initial={false} custom={currentIndex}>
@@ -56,6 +56,7 @@ const Trans = ({ data }) => {
                   key={value}
                   style={{
                     width: "10vw",
+                    minWidth:"40px",
                     textAlign: "center",
                     background: "white",
                     border: "1px solid gray",
@@ -94,7 +95,7 @@ const Trans = ({ data }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            margin: "0 20px",
+            ml:"10px"
           }}
         >
           <ArrowForwardIosSharpIcon fontSize="large" />
