@@ -14,7 +14,7 @@ const OtherPage = () => {
       justifyContent={smallScreen ? 'center' : 'flex-start'}
       alignItems={smallScreen ? 'center' : 'flex-start'}
       spacing={2} sx={{ mt: "35px" ,}}>
-        <Grid item xs={8} md={2.5} ml={5} mr={1}>
+        <Grid item xs={8} md={2.5}  mr={3}  >
           <Card
             sx={{
               height: {
@@ -25,13 +25,18 @@ const OtherPage = () => {
                 xs:"45vw"
               },
               borderRadius: "10px",
-              
+              ml:{
+                xs:0,
+                sm:"80px",
+                md:"30px"
+              },
               mt:{md:"55px"},
               overflow: {
                 xs: "visible",
                 sm: "visible",
                 md: "hidden",
               },
+              
               position: {
                 xs: "static",
                 sm: "static",
@@ -87,7 +92,7 @@ const OtherPage = () => {
         </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={11} md={8}  sx={{ml:{md:"1vw",xs:"3.5vw" }}}>
+        <Grid item xs={11} md={8}  sx={{ml:{md:"1vw",xs:0 }}}>
           <Card sx={{  mb: "20px",  }}>
             <CardContent sx={{ padding: "25px", textAlign: "left" }}>
               <Typography variant="h5" sx={{ fontWeight: "bold", mb: "5px" }}>
