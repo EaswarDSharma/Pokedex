@@ -26,10 +26,11 @@ const OtherPage = () => {
               },
               borderRadius: "10px",
               ml:{
-                xs:0,
+                xs:"7vw",
                 sm:"80px",
                 md:"30px"
               },
+              
               mt:{md:"55px"},
               overflow: {
                 xs: "visible",
@@ -43,7 +44,7 @@ const OtherPage = () => {
                 md: "fixed",
               },
               top: 0,
-              minWidth:"230px"
+              minWidth:"200px"
             }}
           >
             <CardContent
@@ -65,8 +66,8 @@ const OtherPage = () => {
                   borderRadius: "50%",
                 }}
               />
-          <div style={{ marginTop: "15px" }}>
-          <Mail sx={{ marginRight: "1px" }} />
+          <div style={{ marginTop: "15px", }}>
+          <Mail sx={{ marginRight: "5px", marginBottom: "-6px", }} />
           easwardsharma@gmail.com
         </div>
         <div style={{ marginTop: "15px", display: "flex", alignItems: "center" }}>
@@ -92,7 +93,7 @@ const OtherPage = () => {
         </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={11} md={8}  sx={{ml:{md:"1vw",xs:0 }}}>
+        <Grid item xs={11} md={8}  sx={{ml:{md:"1vw",xs:0 },mt:"5px"}}>
           <Card sx={{  mb: "20px",  }}>
             <CardContent sx={{ padding: "25px", textAlign: "left" }}>
               <Typography variant="h5" sx={{ fontWeight: "bold", mb: "5px" }}>
