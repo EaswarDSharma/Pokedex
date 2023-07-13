@@ -24,9 +24,54 @@ async function edfood(query){
   url="not found"});
   return url;
  }
+ function getAbilityString(abilities) {
+  const abilityNames = abilities.map((ability) => ability.ability.name);
+  
+  if (abilityNames.length === 1) {
+    return `The ability is ${abilityNames[0]}.`;
+  } else {
+    const lastTwoAbilities = abilityNames.slice(-2).join(" and ");
+    return `The abilities are ${abilityNames.slice(0, -2)} ${lastTwoAbilities}.`;
+  }
+}
+function getStatsString(stats) {
+  const statNames = {
+    hp: "hp",
+    attack: "agility",
+    speed: "atk",
+  };
+
+  const statValues = stats.reduce((result, stat) => {
+    if (stat.stat.name in statNames) {
+      result[stat.stat.name] = stat.base_stat;
+    }
+    return result;
+  }, {});
+
+  const formattedStats = Object.entries(statValues).map(([name, value]) => `${statNames[name]}: ${value}`);
+  return ` Stats are as ${formattedStats}.`;
+}
+
+ async function poke(query){
+  url="temporary";
+ 
+   await axios.get(`https://pokeapi.co/api/v2/pokemon/${query}`)
+  .then((response) => {
+    url=response.data;
+  })
+  .catch((error) => {
+  url="not found"});
+  return url;
+ }
+
 sub.on('message', async (channel, message) => {
   //redisClient.hset('values', message,await fibb(parseInt(message))
   const foodmess=await edfood(message)
-  await redisClient.hset(channel, message,foodmess)
+  const pokemon= await poke(message)
+  abilities=getAbilityString(pokemon.abilities)
+  stats=getStatsString(pokemon.stats)
+  string=getAbilityString(pokemon.abilities)+getStatsString(pokemon.stats)
+  console.log(string)
+  await redisClient.hset(channel, message,string)
 })
 sub.subscribe('insert');
