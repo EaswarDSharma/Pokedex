@@ -19,24 +19,6 @@ function Fib() {
   const [values, setvalues] = useState({});
   const [index, setIndex] = useState("");
 
-  
-  // To add an item:  putAdornment i
-  /* setIndex(prevItems => [
-  ...prevItems,
-  {  text: newText, offset: 100 }
-]);
-**********
-<form onSubmit={handleSubmit}>
-        <label>Enter your index:</label>
-        <input
-          value={index}
-          onChange={(event) => setIndex(event.target.value)}
-        />
-        <button>Submit</button>
-      </form>
-*********
-); */
-
 
   const columns = useMemo(
     () => [
