@@ -54,7 +54,7 @@ function Fib() {
     if (index.trim() !== "") {
       await axios.post("/api/values", {
         index: index.toLowerCase(),
-      });
+      });}
       setIndex("");
       try {
         const seenIndexes = await axios.get("/api/values/all");
@@ -63,7 +63,7 @@ function Fib() {
         setvalues(values.data);
       } catch (error) {
         console.log(error);
-      }
+      
     }
   };
   const RenderSeenIndexes = React.memo(() => {

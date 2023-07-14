@@ -37,8 +37,8 @@ async function edfood(query){
 function getStatsString(stats) {
   const statNames = {
     hp: "hp",
-    attack: "agility",
-    speed: "atk",
+    attack: " agility",
+    speed: " atk",
   };
 
   const statValues = stats.reduce((result, stat) => {
@@ -68,10 +68,8 @@ sub.on('message', async (channel, message) => {
   //redisClient.hset('values', message,await fibb(parseInt(message))
   const foodmess=await edfood(message)
   const pokemon= await poke(message)
-  abilities=getAbilityString(pokemon.abilities)
-  stats=getStatsString(pokemon.stats)
+  console.log(channel)
   string=getAbilityString(pokemon.abilities)+getStatsString(pokemon.stats)
-  console.log(string)
-  await redisClient.hset(channel, message,string)
+  await redisClient.hset("values", message,string)
 })
 sub.subscribe('insert');

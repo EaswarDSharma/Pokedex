@@ -26,7 +26,7 @@ const OtherPage = () => {
               },
               borderRadius: "10px",
               ml:{
-                xs:"7vw",
+                xs:"8vw",
                 sm:"80px",
                 md:"30px"
               },
