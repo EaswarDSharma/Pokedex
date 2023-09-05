@@ -67,7 +67,7 @@ function Fib() {
     }
   };
   const RenderSeenIndexes = React.memo(() => {
-    const ind = [];
+    const ind = ["riooi","ipfsdui","ojkhdf","uhdsf"];
     for (let key in values) {
       ind.push(key);
     }
@@ -91,7 +91,7 @@ function Fib() {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        minHeight="90vh"
+        minHeight="50vh"
       >
         <MaterialReactTable
         columns={columns}
@@ -108,8 +108,6 @@ function Fib() {
               width:"25px"
             }
           }}
-
-
            />
       </Box>
     );
@@ -128,7 +126,6 @@ function Fib() {
           variant="standard"
           label="..Search Pokemon"
           color="grey"
-          
           onChange={(event) => setIndex(event.target.value)}
           InputProps={{
             style: {

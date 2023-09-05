@@ -44,7 +44,7 @@ const Trans = ({ data }) => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            width: "35vw",
+            width: "30vw",
             minWidth:"230px"
           }}
         >
