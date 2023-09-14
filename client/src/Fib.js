@@ -67,7 +67,7 @@ function Fib() {
     }
   };
   const RenderSeenIndexes = React.memo(() => {
-    const ind = ["riooi","ipfsdui","ojkhdf","uhdsf"];
+    const ind = [];
     for (let key in values) {
       ind.push(key);
     }
