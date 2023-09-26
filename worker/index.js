@@ -53,6 +53,7 @@ function getStatsString(stats) {
 sub.on('message', async (channel, message) => {
   const pokemon= await poke(message)
   string=getAbilityString(pokemon.abilities)+getStatsString(pokemon.stats)
-  await redisClient.hset(channel, message,string)
+  console.log("poke datb ois "+string)
+  await redisClient.hset("values", message,string)
 })
 sub.subscribe('insert');
