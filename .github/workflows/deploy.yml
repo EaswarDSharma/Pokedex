@@ -33,6 +33,7 @@ jobs:
           application_name: pokedex-doc
           environment_name: Pokedex-doc-env
           existing_bucket_name: elasticbeanstalk-ap-south-1-776931043654
+          use_existing_version_if_available: true 
           region: ap-south-1
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
