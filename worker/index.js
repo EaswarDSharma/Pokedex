@@ -36,7 +36,7 @@ function getStatsString(stats) {
 
   const formattedStats = Object.entries(statValues).map(([name, value]) => `${statNames[name]}: ${value}`);
   return ` Stats are as ${formattedStats}.`;
-}
+} 
 
  async function poke(query){
   url="temporary";
