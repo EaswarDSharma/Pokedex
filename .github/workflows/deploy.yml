@@ -30,8 +30,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: pokedex
-          environment_name: Pokedex-env
+          application_name: pokemon
+          environment_name: Pokemon-env
           existing_bucket_name: elasticbeanstalk-ap-south-1-776931043654
           use_existing_version_if_available: true 
           region: ap-south-1
