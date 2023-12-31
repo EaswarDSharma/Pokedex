@@ -9,12 +9,12 @@ import {
   Paper,
 } from "@mui/material";
 import MaterialReactTable from "material-react-table";
-import "./Fib.css";
+import "./Pokemon.css";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import Trans from "./Trans.jsx";
 import CatchingPokemonTwoToneIcon from "@mui/icons-material/CatchingPokemonTwoTone";
 
-function Fib() {
+function Pokemon() {
   const [seenIndexes, setSeenIndexes] = useState([]);
   const [values, setvalues] = useState({});
   const [index, setIndex] = useState("");
@@ -203,4 +203,4 @@ function Fib() {
   );
 }
 
-export default Fib;
+export default Pokemon;

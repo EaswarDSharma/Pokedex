@@ -1,6 +1,6 @@
-const axios = require('axios');
-const keys = require('./keys');
-const redis = require('redis');
+const axios = require("axios");
+const keys = require("./keys");
+const redis = require("redis");
 
 const redisClient = redis.createClient({
   host: keys.redisHost,
@@ -9,15 +9,17 @@ const redisClient = redis.createClient({
 });
 const sub = redisClient.duplicate();
 
-
- function getAbilityString(abilities) {
+function getAbilityString(abilities) {
   const abilityNames = abilities.map((ability) => ability.ability.name);
-  
+
   if (abilityNames.length === 1) {
     return `The ability is ${abilityNames[0]}.`;
   } else {
     const lastTwoAbilities = abilityNames.slice(-2).join(" and ");
-    return `The abilities are ${abilityNames.slice(0, -2)} ${lastTwoAbilities}.`;
+    return `The abilities are ${abilityNames.slice(
+      0,
+      -2
+    )} ${lastTwoAbilities}.`;
   }
 }
 function getStatsString(stats) {
@@ -34,31 +36,37 @@ function getStatsString(stats) {
     return result;
   }, {});
 
-  const formattedStats = Object.entries(statValues).map(([name, value]) => `${statNames[name]}: ${value}`);
+  const formattedStats = Object.entries(statValues).map(
+    ([name, value]) => `${statNames[name]}: ${value}`
+  );
   return ` Stats are as ${formattedStats}.`;
-} 
+}
 
- async function poke(query){
-  url="temporary";
- 
-  await axios.get(`https://pokeapi.co/api/v2/pokemon/${query}`)
-  .then((response) => {
-    url=response.data;
-  })
-  .catch((error) => {
-  url="not found"});
+async function poke(query) {
+  url = "temporary";
+
+  await axios
+    .get(`https://pokeapi.co/api/v2/pokemon/${query}`)
+    .then((response) => {
+      url = response.data;
+    })
+    .catch((error) => {
+      url = "not found";
+    });
 
   return url;
- }
+}
 
-sub.on('message', async (channel, message) => {
-  const pokemon= await poke(message)
-  console.log(pokemon)
-  if(pokemon!=="not found"){
-  string=getAbilityString(pokemon.abilities)+getStatsString(pokemon.stats)
-  console.log("poke data is "+string)
- }
-  else { string="not found" }
-  redisClient.hset("values", message,string)
-})
-sub.subscribe('insert');
+sub.on("message", async (channel, message) => {
+  const pokemon = await poke(message);
+  console.log(pokemon);
+  if (pokemon !== "not found") {
+    string =
+      getAbilityString(pokemon.abilities) + getStatsString(pokemon.stats);
+    console.log("poke data is " + string);
+  } else {
+    string = "not found";
+  }
+  redisClient.hset("values", message, string);
+});
+sub.subscribe("insert");

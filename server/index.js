@@ -18,7 +18,7 @@ const pgClient = new Pool({
   password: keys.pgPassword,
   port: keys.pgPort,
   ssl: {
-    rejectUnauthorized: false 
+    rejectUnauthorized: false,
   },
 });
 
@@ -51,7 +51,7 @@ app.get("/values/all", async (req, res) => {
 
 app.get("/values/current", async (req, res) => {
   await redisClient.hgetall("values", (err, values) => {
-    console.log("valuesare  "+JSON.stringify(values))
+    console.log("valuesare  " + JSON.stringify(values));
     res.send(values);
   });
 });
@@ -60,8 +60,8 @@ app.post("/values", async (req, res) => {
   const index = req.body.index;
 
   redisClient.hset("values", index, "Nothing yet!");
-   redisPublisher.publish("insert", index);
-   pgClient.query("INSERT INTO values(link) VALUES($1)", [index]);
+  redisPublisher.publish("insert", index);
+  pgClient.query("INSERT INTO values(link) VALUES($1)", [index]);
 
   res.send({ working: true });
 });
