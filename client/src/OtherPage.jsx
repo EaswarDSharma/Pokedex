@@ -85,7 +85,7 @@ const OtherPage = () => {
             </a>
           </div>
           <div style={{ marginTop: "20px" }}>
-            <a href="https://github.com/EaswarDSharma/dockerized">Source code</a>
+            <a href="https://github.com/EaswarDSharma/Pokedex">Source code</a>
           </div>
           <div style={{ marginTop: "20px" }}>
             <a href="https://www.example.com/project2">Project 2</a>
