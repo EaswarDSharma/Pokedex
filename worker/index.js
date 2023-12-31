@@ -41,19 +41,24 @@ function getStatsString(stats) {
  async function poke(query){
   url="temporary";
  
-   await axios.get(`https://pokeapi.co/api/v2/pokemon/${query}`)
+  await axios.get(`https://pokeapi.co/api/v2/pokemon/${query}`)
   .then((response) => {
     url=response.data;
   })
   .catch((error) => {
   url="not found"});
+
   return url;
  }
 
 sub.on('message', async (channel, message) => {
   const pokemon= await poke(message)
+  console.log(pokemon)
+  if(pokemon!=="not found"){
   string=getAbilityString(pokemon.abilities)+getStatsString(pokemon.stats)
-  console.log("poke datb ois "+string)
-  await redisClient.hset("values", message,string)
+  console.log("poke data is "+string)
+ }
+  else { string="not found" }
+  redisClient.hset("values", message,string)
 })
 sub.subscribe('insert');
